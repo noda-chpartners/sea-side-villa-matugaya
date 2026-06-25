@@ -1,5 +1,12 @@
+import { useState, useEffect } from 'react';
 import { useScrollAnimationGroup } from '@/hooks/useScrollAnimation';
 import living from '/src/assets/living.png';
+import tv from '/src/assets/tv.jpg';
+import fridge from '/src/assets/fridge.png';
+import sara from '/src/assets/sara.jpg';
+import tool from '/src/assets/tool.jpg';
+import bath from '/src/assets/bath.png';
+
 import SectionWave from '@/components/SectionWave';
 import kai from '/src/assets/kai.png';
 import hitode from '/src/assets/hitode.png';
@@ -37,23 +44,43 @@ const amenitiesData = [
   },
   {
     id: 6,
-    title: '洗濯機',
+    title: 'お風呂・洗濯機',
     icon: 'ri-t-shirt-line',
-    description: '洗濯物干しもございます。',
+    description: 'お風呂、洗濯機、洗濯物干しもございます。',
   },
+];
+
+// 変更点1: 画像ごとに「src」と「position」を指定するオブジェクトの配列にする
+const slideImages = [
+  { src: living, position: 'object-center' },           // 中央
+  { src: bath, position: 'object-center' },             // 下寄り
+  { src: tv, position: 'object-center' },                  // 上寄り
+  { src: fridge, position: 'object-top' },        // カスタム位置（横50%、縦30%の位置）
+  { src: sara, position: 'object-bottom' },
+  { src: tool, position: 'object-center' },
 ];
 
 export default function AmenitiesSection() {
   const { ref, isVisible } = useScrollAnimationGroup({ threshold: 0.15 });
+  
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % slideImages.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-<section id="amenities" className="relative py-20 md:py-28 bg-gradient-to-b from-background-100 via-background-100/90 to-background-200">
+    <section id="amenities" className="relative py-20 md:py-28 bg-gradient-to-b from-background-100 via-background-100/90 to-background-200">
       <div className="max-w-[1200px] mx-auto px-4 md:px-6">
         
         {/* 見出しエリア */}
         <div ref={ref} className="text-center mb-12 md:mb-16">
-        <span className={`scroll-fade-up ${isVisible ? 'visible' : ''} block text-3xl md:text-4xl lg:text-5xl font-script text-primary-400 tracking-widest -mb-4 md:-mb-6 relative z-0`}>
-        Facilities
+          <span className={`scroll-fade-up ${isVisible ? 'visible' : ''} block text-3xl md:text-4xl lg:text-5xl font-script text-primary-400 tracking-widest -mb-4 md:-mb-6 relative z-0`}>
+            Facilities
           </span>
           <h2 className={`scroll-fade-up ${isVisible ? 'visible' : ''} relative z-10 flex items-center justify-center gap-3 md:gap-5 text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground-950`} data-delay="1">
             <img src={kai} alt="貝殻" className="w-16 md:w-18 lg:w-24 h-auto object-contain" />
@@ -65,16 +92,22 @@ export default function AmenitiesSection() {
           </p>
         </div>
 
-        {/* メイン画像 (living.jpg) */}
+        {/* スライドショー画像エリア */}
         <div className={`scroll-fade-up ${isVisible ? 'visible' : ''} mb-12 md:mb-16 rounded-xl overflow-hidden shadow-md aspect-video max-h-[500px] relative w-full bg-gray-200`} data-delay="3">
-          <img
-            src={living}
-            alt="リビングルームの様子"
-            className="w-full h-full object-cover object-center"
-          />
+          {slideImages.map((image, index) => (
+            <img
+              key={index}
+              src={image.src} // 変更点2: image.src を参照
+              alt={`設備画像 ${index + 1}`}
+              // 変更点3: image.position を className に追加し、固定の object-center を削除
+              className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${image.position} ${
+                index === currentImageIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+              }`}
+            />
+          ))}
         </div>
 
-        {/* シンプルなカードのグリッド (3列 x 2行) */}
+        {/* シンプルなカードのグリッド */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
           {amenitiesData.map((item, index) => (
             <div 

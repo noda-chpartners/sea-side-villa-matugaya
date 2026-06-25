@@ -23,23 +23,38 @@ export default function ReservationSection() {
             <img src={hitode} alt="ヒトデ" className="w-16 md:w-18 lg:w-24 h-auto object-contain" />
           </h2>
           <p className={`scroll-fade-up ${isVisible ? 'visible' : ''} mt-4 text-sm md:text-base text-foreground-600`} data-delay="2">
-            ご予約・お問い合わせは<br />お電話や楽天トラベル様にて承っております
+            ご予約は、楽天トラベル様やAirbnb様で承っております
           </p>
 
           <div className={`scroll-fade-up ${isVisible ? 'visible' : ''} mt-6 flex flex-col sm:flex-row items-center justify-center gap-4`} data-delay="3">
             <a
-              href="tel:08049470316"
-              className="inline-flex items-center gap-2 bg-primary-500 hover:bg-primary-600 text-background-50 px-6 py-3 rounded-full text-base font-bold whitespace-nowrap cursor-pointer transition-all"
-            >
-              <i className="ri-phone-line"></i> 080-4947-0316
-            </a>
-            <a
               href="https://travel.rakuten.co.jp/HOTEL/194635/194635.html"
               target="_blank"
               rel="nofollow noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-accent-500 hover:bg-accent-600 text-background-50 px-6 py-3 rounded-full text-base font-bold whitespace-nowrap cursor-pointer transition-all"
+              className="inline-flex justify-center gap-2 w-56 bg-accent-500 hover:bg-accent-600 text-background-50 px-6 py-3 rounded-full text-base font-bold whitespace-nowrap cursor-pointer transition-all"
             >
               <i className="ri-external-link-line"></i> 楽天トラベルで予約
+            </a>
+            <a
+              href="https://www.airbnb.jp/rooms/1491011647491988320?source_impression_id=p3_1782375389_P3eXF_o44StkZ8p1.html"
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+              className="inline-flex justify-center gap-2 w-56 bg-accent-500 hover:bg-accent-600 text-background-50 px-6 py-3 rounded-full text-base font-bold whitespace-nowrap cursor-pointer transition-all"
+            >
+              <i className="ri-external-link-line"></i> Airbnbで予約
+            </a>
+          </div>
+          
+          <p className={`scroll-fade-up ${isVisible ? 'visible' : ''} mt-10 text-sm md:text-base text-foreground-600`} data-delay="4">
+            お問い合わせは、お電話までお気軽にご連絡ください
+          </p>
+
+          <div className={`scroll-fade-up ${isVisible ? 'visible' : ''} mt-6 flex flex-col sm:flex-row items-center justify-center gap-4`} data-delay="5">
+            <a
+              href="tel:08049470316"
+              className="inline-flex justify-center w-56 gap-2 bg-primary-500 hover:bg-primary-600 text-background-50 px-6 py-3 rounded-full text-base font-bold whitespace-nowrap cursor-pointer transition-all"
+            >
+              <i className="ri-phone-line"></i> 080-4947-0316
             </a>
           </div>
         </div>

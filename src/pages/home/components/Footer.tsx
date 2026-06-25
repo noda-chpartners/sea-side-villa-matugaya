@@ -69,6 +69,16 @@ export default function Footer() {
                 <i className="ri-external-link-line"></i> 楽天トラベルで予約
               </a>
             </li>
+            <li >
+              <a
+                href="https://www.airbnb.jp/rooms/1491011647491988320?source_impression_id=p3_1782375389_P3eXF_o44StkZ8p1.html"
+                target="_blank"
+                rel="nofollow noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-accent-400 hover:text-accent-300 transition-colors"
+              >
+                <i className="ri-external-link-line"></i> Airbnbで予約
+              </a>
+            </li>
           </ul>
         </div>
 
