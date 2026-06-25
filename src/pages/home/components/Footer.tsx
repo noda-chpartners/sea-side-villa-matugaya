@@ -7,21 +7,24 @@ export default function Footer() {
   // 2つ目のコードで使われていたリンクを配列化
   const navLinks = [
     { href: '#plans', label: '宿泊プラン' },
-    { href: '#amenities', label: '設備・アメニティ' },
+    { href: '#amenities', label: '設備' },
     { href: '#info', label: '基本情報' },
     { href: '#access', label: 'アクセス' },
     { href: '#reservation', label: 'ご予約' },
   ];
 
   return (
-    <footer className="bg-foreground-950 text-background-50">
+    <footer className="bg-foreground-700 text-background-50">
       {/* Upper section */}
       <div className="max-w-[1200px] mx-auto px-6 md:px-10 lg:px-16 py-14 md:py-18 flex flex-col items-center text-center">
 
         {/* Brand */}
         <div className="mb-10 flex flex-col items-center">
-          <p className="font-heading text-3xl font-bold tracking-tight mb-4">
+          <p className="font-heading font-bold text-3xl tracking-tight">
             シーサイドビラ松ヶ谷
+          </p>
+          <p className="font-heading text-base tracking-tight mb-4">
+            SEASIDE VILLA  MATUGAYA
           </p>
           <div className="w-8 h-[2px] bg-accent-500 mb-5"></div>
         </div>

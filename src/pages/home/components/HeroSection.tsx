@@ -1,10 +1,11 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import SectionWave from '@/components/SectionWave';
-import  hero from '/src/assets/hero.png';
-import  hero2 from '/src/assets/hero2.jpg';
-import  hero3 from '/src/assets/hero3.jpg';
-import  hero4 from '/src/assets/hero4.jpg';
+import hero from '/src/assets/hero.png';
+import hero2 from '/src/assets/hero2.png';
+import hero3 from '/src/assets/hero3.png';
+import hero4 from '/src/assets/hero4.jpg';
+import yotto from '/src/assets/yotto.png';
 
 // 画像配列を定義（4枚の画像を順番にセット）
 const backgroundImages = [hero, hero2, hero3, hero4];
@@ -13,7 +14,7 @@ export default function HeroSection() {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  
+
   // 現在表示している画像のインデックスを管理するステート
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -59,7 +60,7 @@ export default function HeroSection() {
 
   return (
     <>
-      <section className="relative w-full h-screen min-h-[600px] overflow-hidden" id="hero">
+      <section className="relative w-full h-screen h-[100dvh] overflow-hidden" id="hero">
         <div className="absolute inset-0 bg-foreground-950">
           {/* 画像をループ出力し、現在のインデックスのみopacity-100にする */}
           {backgroundImages.map((imgSrc, index) => (
@@ -67,9 +68,8 @@ export default function HeroSection() {
               key={index}
               src={imgSrc}
               alt={`シーサイドビラ松ヶ谷 外観 ${index + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-[2000ms] ease-in-out ${
-                index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-              }`}
+              className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-[2000ms] ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+                }`}
             />
           ))}
         </div>
@@ -77,18 +77,16 @@ export default function HeroSection() {
 
         <nav
           id="main-nav"
-          className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-            scrolled ? 'bg-background-50/95 shadow-sm' : 'bg-transparent'
-          }`}
+          className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-background-50/95 shadow-sm' : 'bg-transparent'
+            }`}
         >
           <div className="max-w-[1400px] mx-auto px-4 md:px-6 flex items-center justify-between h-16 md:h-20">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-primary-500 flex items-center justify-center">
-                <i className="ri-home-smile-line text-xl text-background-50"></i>
-              </div>
-              <span className={`text-lg font-heading font-bold whitespace-nowrap transition-colors ${scrolled ? 'text-foreground-950' : 'text-background-50'}`}>
+
+              <span className={`text-lg font-heading font whitespace-nowrap transition-colors ${scrolled ? 'text-foreground-950' : 'text-background-50'}`}>
                 シーサイドビラ松ヶ谷
               </span>
+
             </div>
 
             <div className="hidden md:flex items-center gap-8">
@@ -96,15 +94,14 @@ export default function HeroSection() {
                 <button
                   key={item.id}
                   onClick={() => scrollTo(item.id)}
-                  className={`text-sm whitespace-nowrap cursor-pointer transition-colors ${
-                    scrolled ? 'text-foreground-700 hover:text-foreground-950' : 'text-background-50/90 hover:text-background-50'
-                  }`}
+                  className={`text-sm whitespace-nowrap cursor-pointer transition-colors ${scrolled ? 'text-foreground-700 hover:text-primary-500' : 'text-background-50/90 hover:text-background-50'
+                    }`}
                 >
                   {item.label}
                 </button>
               ))}
-              <a href="#reservation" className="inline-flex items-center gap-2 bg-primary-500 hover:bg-primary-600 text-background-50 px-5 py-2.5 rounded-full text-sm font-bold whitespace-nowrap cursor-pointer transition-all">
-                ご予約 <i className="ri-arrow-right-line"></i>
+              <a href="#reservation" className="inline-flex items-center gap-2 bg-accent-500 hover:bg-accent-600 text-background-50 px-5 py-2.5 rounded-full text-sm font-bold whitespace-nowrap cursor-pointer transition-all hover:no-underline">
+                ご予約 
               </a>
             </div>
 
@@ -118,46 +115,49 @@ export default function HeroSection() {
           </div>
         </nav>
 
-        <div ref={ref} className="relative z-10 flex flex-col items-start justify-center h-full max-w-[1400px] mx-auto px-4 md:px-6 pt-20">
+        <div ref={ref} className="relative z-10 flex flex-col items-start justify-center h-full max-w-[1400px] mx-auto px-4 md:px-6 pt-48 md:pt-20">
           <div className={`scroll-fade-up ${isVisible ? 'visible' : ''}`}>
-            
+
           </div>
           <h1 className={`scroll-fade-up ${isVisible ? 'visible' : ''}`} data-delay="1">
-            <span className="block text-4xl md:text-6xl lg:text-7xl font-zen font-bold text-background-50 leading-tight">
-             カジュアルに<br />
+            <span className="block text-3xl md:text-5xl lg:text-6xl 2xl:text-7xl font-heading font-bold text-background-50 leading-tight [text-shadow:0_0_8px_oklch(var(--foreground-950)),0_0_20px_oklch(var(--foreground-950)/0.7),0_0_40px_oklch(var(--foreground-950)/0.4)]">
+              カジュアルに<br />
             </span>
-            <span className="block text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-background-50 leading-tight">
+            <span className="block text-4xl md:text-6xl lg:text-7xl 2xl:text-8xl font-heading font-bold text-background-50 leading-tight [text-shadow:0_0_8px_oklch(var(--foreground-950)),0_0_20px_oklch(var(--foreground-950)/0.7),0_0_40px_oklch(var(--foreground-950)/0.4)]">
               楽しめる別荘
             </span>
           </h1>
-          <p className={`scroll-fade-up ${isVisible ? 'visible' : ''} mt-4 md:mt-6 text-base md:text-lg text-background-50/80 max-w-lg`} data-delay="2">
-            最大8名様まで。BBQも楽しめる千葉の隠れ家で、<br className="hidden sm:block" />心ゆくまでくつろぐ時間を。
+          <p className={`scroll-fade-up ${isVisible ? 'visible' : ''} mt-2 md:mt-6 text-sm md:text-lg text-background-50/90 max-w-lg`} data-delay="2">
+            BBQも楽しめる千葉の隠れ家で、<br />心ゆくまでくつろぐ時間を。
           </p>
-         
+
         </div>
         <SectionWave fillClass="fill-background-100" position="bottom" />
+        
+        {/* ヨット画像を画面右下、波の上に配置 */}
+        <img
+          src={yotto}
+          alt="ヨットのイラスト"
+          className="absolute bottom-2 md:bottom-4 right-6 w-20 md:w-36 lg:w-48 h-auto z-20 pointer-events-none"
+        />
       </section>
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-[100] md:hidden transition-opacity duration-300 ${
-          menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
+        className={`fixed inset-0 z-[100] md:hidden transition-opacity duration-300 ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          }`}
       >
         <div className="absolute inset-0 bg-foreground-950/60 backdrop-blur-sm" onClick={() => setMenuOpen(false)}></div>
 
         <div
-          className={`absolute top-0 right-0 h-full w-[85%] max-w-[380px] bg-background-50 shadow-2xl transition-transform duration-300 ${
-            menuOpen ? 'translate-x-0' : 'translate-x-full'
-          }`}
+          className={`absolute top-0 right-0 h-full w-[85%] max-w-[380px] bg-background-50 shadow-2xl transition-transform duration-300 ${menuOpen ? 'translate-x-0' : 'translate-x-full'
+            }`}
         >
           <div className="flex flex-col h-full p-6">
             <div className="flex items-center justify-between mb-10">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full bg-primary-500 flex items-center justify-center">
-                  <i className="ri-home-smile-line text-lg text-background-50"></i>
-                </div>
-                <span className="text-base font-heading font-bold text-foreground-950">シーサイドビラ松ヶ谷</span>
+                
+                <span className="text-base font-heading text-foreground-950">シーサイドビラ松ヶ谷</span>
               </div>
               <button
                 onClick={() => setMenuOpen(false)}
@@ -196,7 +196,7 @@ export default function HeroSection() {
                 onClick={(e) => { e.preventDefault(); scrollTo('reservation'); }}
                 className="flex items-center justify-center gap-2 w-full bg-primary-500 hover:bg-primary-600 text-background-50 px-6 py-4 rounded-full text-base font-bold whitespace-nowrap cursor-pointer transition-all"
               >
-                ご予約する <i className="ri-arrow-right-line"></i>
+                ご予約する 
               </a>
 
               <p className="text-center text-xs text-foreground-500 mt-5">

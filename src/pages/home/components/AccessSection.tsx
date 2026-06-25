@@ -1,31 +1,28 @@
+import SectionWave from '@/components/SectionWave';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function AccessSection() {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.15 });
 
   return (
-    <section id="access" className="relative py-20 md:py-28 bg-background-100">
+    <section id="access" className="relative py-20 md:py-28 bg-background-50">
       <div className="max-w-[1400px] mx-auto px-4 md:px-6">
-        <div ref={ref} className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
+        <div ref={ref} className="flex flex-col lg:flex-row gap-12 lg:gap-16 text-left min-[455px]:text-center">
           <div className="lg:w-[55%]">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-3 h-3 rounded-full bg-foreground-950"></div>
-              <span className="text-xs font-bold text-primary-600 tracking-widest uppercase">Access</span>
-            </div>
 
             <blockquote className={`scroll-fade-up ${isVisible ? 'visible' : ''} relative`}>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-extrabold text-foreground-950 leading-snug pl-8">
+              <h2 className="text-xl md:text-2xl lg:text-3xl font-heading font-extrabold text-foreground-950 leading-snug ">
                 〒289-1303<br />
                 千葉県山武市松ヶ谷3102-4<br />
                 シーサイドビラ松ヶ谷
               </h2>
             </blockquote>
 
-            <div className={`scroll-fade-up ${isVisible ? 'visible' : ''} mt-6 pl-8 space-y-3`} data-delay="1">
-              <div className="flex items-center gap-3">
+            <div className={`scroll-fade-up ${isVisible ? 'visible' : ''} mt-6 space-y-3`} data-delay="1">
+              <div className="flex gap-3 w-full justify-start min-[455px]:justify-center">
                 <i className="ri-train-line text-lg text-primary-500 w-6 h-6 flex items-center justify-center flex-shrink-0"></i>
                 <p className="text-sm md:text-base text-foreground-700">
-                  <strong className="text-foreground-950">JR東金線 成東駅</strong> から車で約10分
+                  JR東金線 <strong className="text-foreground-950">成東駅</strong> から<strong className="text-foreground-950">車</strong>で<strong className="text-foreground-950">約10分</strong>
                 </p>
               </div>
             </div>
@@ -48,6 +45,7 @@ export default function AccessSection() {
           </div>
         </div>
       </div>
+      <SectionWave fillClass="fill-background-200" position="bottom" />
     </section>
   );
 }

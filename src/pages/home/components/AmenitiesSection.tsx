@@ -1,5 +1,8 @@
 import { useScrollAnimationGroup } from '@/hooks/useScrollAnimation';
 import living from '/src/assets/living.png';
+import SectionWave from '@/components/SectionWave';
+import kai from '/src/assets/kai.png';
+import hitode from '/src/assets/hitode.png';
 
 const amenitiesData = [
   {
@@ -18,7 +21,7 @@ const amenitiesData = [
     id: 3,
     title: 'アメニティ',
     icon: 'ri-drop-line',
-    description: 'タオル、固形石鹸、ヘアドライヤー、シャンプー、ソープ、歯ブラシ',
+    description: 'タオル、固形石鹸、ヘアドライヤー、シャンプー、ソープ、歯ブラシございます。',
   },
   {
     id: 4,
@@ -30,7 +33,7 @@ const amenitiesData = [
     id: 5,
     title: 'キッチン',
     icon: 'ri-restaurant-line',
-    description: 'コンロ、調理器具、冷蔵庫、電子レンジ、食器',
+    description: 'コンロ、調理器具、冷蔵庫、電子レンジ、食器ございます。',
   },
   {
     id: 6,
@@ -44,16 +47,18 @@ export default function AmenitiesSection() {
   const { ref, isVisible } = useScrollAnimationGroup({ threshold: 0.15 });
 
   return (
-    <section id="amenities" className="relative py-20 md:py-28 bg-background-100">
+<section id="amenities" className="relative py-20 md:py-28 bg-gradient-to-b from-background-100 via-background-100/90 to-background-200">
       <div className="max-w-[1200px] mx-auto px-4 md:px-6">
         
         {/* 見出しエリア */}
         <div ref={ref} className="text-center mb-12 md:mb-16">
-          <span className={`scroll-fade-up ${isVisible ? 'visible' : ''} inline-block text-xs font-bold text-primary-600 tracking-widest uppercase border border-primary-200 rounded-full px-3 py-1 mb-4`}>
-            Amenities
+        <span className={`scroll-fade-up ${isVisible ? 'visible' : ''} block text-3xl md:text-4xl lg:text-5xl font-script text-primary-400 tracking-widest -mb-4 md:-mb-6 relative z-0`}>
+        Facilities
           </span>
-          <h2 className={`scroll-fade-up ${isVisible ? 'visible' : ''} text-3xl md:text-4xl lg:text-5xl font-heading font-extrabold text-foreground-950`} data-delay="1">
-            設備・アメニティ
+          <h2 className={`scroll-fade-up ${isVisible ? 'visible' : ''} relative z-10 flex items-center justify-center gap-3 md:gap-5 text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground-950`} data-delay="1">
+            <img src={kai} alt="貝殻" className="w-16 md:w-18 lg:w-24 h-auto object-contain" />
+            <span>設備</span>
+            <img src={hitode} alt="ヒトデ" className="w-16 md:w-18 lg:w-24 h-auto object-contain" />
           </h2>
           <p className={`scroll-fade-up ${isVisible ? 'visible' : ''} text-sm md:text-base text-foreground-600 mt-4`} data-delay="2">
             快適にお過ごしいただくための設備をご用意
@@ -91,6 +96,7 @@ export default function AmenitiesSection() {
         </div>
 
       </div>
+      <SectionWave fillClass="fill-background-50" position="bottom" />
     </section>
   );
 }

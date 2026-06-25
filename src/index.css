@@ -4,23 +4,24 @@
 
 :root {
   /* Typography */
-  --font-heading: 'Yomogi', cursive;
+  --font-heading: 'Zen Kaku Gothic New', sans-serif;
   --font-body: 'Noto Sans JP', sans-serif;
   --font-label: 'Noto Sans JP', sans-serif;
   --font-zen: 'Zen Kaku Gothic New', sans-serif;
+  --font-script: 'Caveat', cursive;
 
-  /* Background scale - warm white */
-  --background-50: 0.985 0.002 100;
-  --background-100: 0.96 0.004 98;
-  --background-200: 0.92 0.007 95;
-  --background-300: 0.88 0.008 92;
-  --background-400: 0.82 0.009 90;
-  --background-500: 0.75 0.010 88;
-  --background-600: 0.65 0.008 85;
-  --background-700: 0.55 0.007 82;
-  --background-800: 0.42 0.006 78;
-  --background-900: 0.30 0.005 75;
-  --background-950: 0.18 0.004 72;
+  /* Background scale - soft sea blue (海をイメージした水色) */
+  --background-50: 0.99 0.005 215;
+  --background-100: 0.98 0.018 215;
+  --background-200: 0.93 0.038 215;
+  --background-300: 0.88 0.042 215;
+  --background-400: 0.81 0.046 215;
+  --background-500: 0.73 0.048 215;
+  --background-600: 0.63 0.045 215;
+  --background-700: 0.53 0.042 215;
+  --background-800: 0.43 0.038 215;
+  --background-900: 0.33 0.032 215;
+  --background-950: 0.23 0.028 215;
 
   /* Primary scale - teal green #66c4aa */
   --primary-50: 0.96 0.025 170;
@@ -61,18 +62,21 @@
   --secondary-900: 0.40 0.030 68;
   --secondary-950: 0.28 0.020 65;
 
-  /* Foreground scale - warm dark gray */
-  --foreground-50: 0.95 0.002 260;
-  --foreground-100: 0.88 0.003 260;
-  --foreground-200: 0.78 0.003 260;
-  --foreground-300: 0.68 0.004 260;
-  --foreground-400: 0.58 0.004 260;
-  --foreground-500: 0.50 0.005 260;
-  --foreground-600: 0.42 0.005 260;
-  --foreground-700: 0.34 0.005 260;
-  --foreground-800: 0.26 0.004 260;
-  --foreground-900: 0.20 0.003 260;
-  --foreground-950: 0.13 0.002 260;
+  /* Foreground scale - soft navy (紺色・明るめ＋彩度アップ) */
+  --foreground-50: 0.95 0.020 250;
+  --foreground-100: 0.88 0.032 250;
+  --foreground-200: 0.78 0.045 250;
+  --foreground-300: 0.68 0.055 250;
+  --foreground-400: 0.58 0.062 250;
+  --foreground-500: 0.54 0.068 250;
+  --foreground-600: 0.48 0.075 250;
+  /* 補助テキスト */
+  --foreground-700: 0.42 0.082 250;
+  /* 本文サブ */
+  --foreground-800: 0.36 0.088 250;
+  --foreground-900: 0.32 0.095 250;
+  --foreground-950: 0.29 0.100 250;
+  /* メインの濃い文字（紺） */
 }
 
 
@@ -91,7 +95,7 @@ body {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scroll-fade-up.visible {
@@ -99,12 +103,29 @@ body {
   transform: translateY(0);
 }
 
-.scroll-fade-up[data-delay="1"] { transition-delay: 0.1s; }
-.scroll-fade-up[data-delay="2"] { transition-delay: 0.2s; }
-.scroll-fade-up[data-delay="3"] { transition-delay: 0.3s; }
-.scroll-fade-up[data-delay="4"] { transition-delay: 0.4s; }
-.scroll-fade-up[data-delay="5"] { transition-delay: 0.5s; }
-.scroll-fade-up[data-delay="6"] { transition-delay: 0.6s; }
+.scroll-fade-up[data-delay="1"] {
+  transition-delay: 0.1s;
+}
+
+.scroll-fade-up[data-delay="2"] {
+  transition-delay: 0.2s;
+}
+
+.scroll-fade-up[data-delay="3"] {
+  transition-delay: 0.3s;
+}
+
+.scroll-fade-up[data-delay="4"] {
+  transition-delay: 0.4s;
+}
+
+.scroll-fade-up[data-delay="5"] {
+  transition-delay: 0.5s;
+}
+
+.scroll-fade-up[data-delay="6"] {
+  transition-delay: 0.6s;
+}
 
 .scroll-fade-in {
   opacity: 0;
@@ -119,7 +140,7 @@ body {
   opacity: 0;
   transform: scale(0.92);
   transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scroll-scale-in.visible {

@@ -1,5 +1,9 @@
 import { useState } from 'react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import SectionWave from '@/components/SectionWave';
+import kai from '/src/assets/kai.png';
+import hitode from '/src/assets/hitode.png';
+import yotto2 from '/src/assets/yotto2.png';
 
 export default function ReservationSection() {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
@@ -7,14 +11,16 @@ export default function ReservationSection() {
 
 
   return (
-    <section id="reservation" className="relative py-20 md:py-28 bg-background-50">
+    <section id="reservation" className="relative py-20 md:py-28 bg-background-200">
       <div className="max-w-[1400px] mx-auto px-4 md:px-6">
         <div ref={ref} className="max-w-3xl mx-auto text-center">
-          <span className={`scroll-fade-up ${isVisible ? 'visible' : ''} inline-block text-xs font-bold text-primary-600 tracking-widest uppercase border border-primary-200 rounded-full px-3 py-1 mb-6`}>
+        <span className={`scroll-fade-up ${isVisible ? 'visible' : ''} block text-3xl md:text-4xl lg:text-5xl font-script text-primary-400 tracking-widest -mb-4 md:-mb-6 relative z-0`}>
             Reservation
           </span>
-          <h2 className={`scroll-fade-up ${isVisible ? 'visible' : ''} text-3xl md:text-4xl lg:text-5xl font-heading font-extrabold text-foreground-950`} data-delay="1">
-            ご予約
+          <h2 className={`scroll-fade-up ${isVisible ? 'visible' : ''} relative z-10 flex items-center justify-center gap-3 md:gap-5 text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground-950`} data-delay="1">
+            <img src={kai} alt="貝殻" className="w-16 md:w-18 lg:w-24 h-auto object-contain" />
+            <span>ご予約</span>
+            <img src={hitode} alt="ヒトデ" className="w-16 md:w-18 lg:w-24 h-auto object-contain" />
           </h2>
           <p className={`scroll-fade-up ${isVisible ? 'visible' : ''} mt-4 text-sm md:text-base text-foreground-600`} data-delay="2">
             ご予約・お問い合わせは<br />お電話や楽天トラベル様にて承っております
@@ -40,6 +46,14 @@ export default function ReservationSection() {
 
 
       </div>
+      <SectionWave fillClass="fill-foreground-700" position="bottom" />
+       
+        {/* ヨット画像を画面右下、波の上に配置 */}
+        <img
+          src={yotto2}
+          alt="ヨットのイラスト"
+          className="absolute bottom-3 md:bottom-3 lg:bottom-6 left-4 md:left-6 w-16 md:w-28 lg:w-30 h-auto z-20 pointer-events-none"
+        />
     </section>
   );
 }
