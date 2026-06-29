@@ -7,7 +7,8 @@ export default function AccessSection() {
   return (
     <section id="access" className="relative py-20 md:py-28 bg-background-50">
       <div className="max-w-[1400px] mx-auto px-4 md:px-6">
-        <div ref={ref} className="flex flex-col lg:flex-row gap-12 lg:gap-16 text-left min-[455px]:text-center">
+        <div ref={ref} 
+        className="flex flex-col lg:flex-row lg:items-center gap-12 lg:gap-16 text-left min-[455px]:text-center">
           <div className="lg:w-[55%]">
 
             <blockquote className={`scroll-fade-up ${isVisible ? 'visible' : ''} relative`}>
