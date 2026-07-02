@@ -23,7 +23,7 @@ export default function InfoSection() {
     },
     { 
       label: '定員', 
-      value: '5名〜最大8名' 
+      value: '2名〜最大8名' 
     },
     { 
       label: '駐車場', 
